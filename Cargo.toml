@@ -1,0 +1,26 @@
+[package]
+name = "near-birthday-quest-v2"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+hex-literal = "0.3.4"
+near-sdk = { version = "4.1.0-pre.3", features = ["abi"] }
+sha2 = "0.10.6"
+schemars = "0.8"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+# Opt into extra safety checks on arithmetic operations https://stackoverflow.com/a/64136471/249801
+overflow-checks = true
+
